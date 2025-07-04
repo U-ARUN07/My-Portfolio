@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My-Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            font-size: 18px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 5vw;
+            width: 90vw;
+            background-color: #222;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .navbar a button {
+            margin: 5px;
+            padding: 12px 18px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .navbar a button:hover {
+            background-color: #45a049;
+        }
+        main {
+            margin-top: 0;
+        }
+        #home {
+            height: 100vh;
+            background: linear-gradient(to right, #2193b0, #6dd5ed);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #home h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+        #home p {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+        }
+        #home a button {
+            padding: 14px 24px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 20px;
+            background-color: white;
+            color: #2196F3;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        #home a button:hover {
+            background-color: #2196F3;
+            color: white;
+        }
+        section {
+            height: 90vh;
+            padding: 40px;
+            margin: 5vh 5vw;
+            border-radius: 50px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        #about {
+            background-color: #e3f2fd;
+        }
+        #skills {
+            background-color: #f1f8e9;
+        }
+        #projects {
+            background-color: #fff3e0;
+        }
+        #contact {
+            background-color: #ead3db;
+        }
+        h1 {
+            font-size: 2.2rem;
+        }
+        ol li {
+            margin: 8px 0;
+        }
+        img {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th,
+        td {
+            border: 1px solid #666;
+            padding: 12px 18px;
+            font-size: 1rem;
+        }
+        form {
+            margin-top: 20px;
+            text-align: left;
+            width: 60%;
+        }
+        form .form-row {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+        }
+        form label {
+            width: 150px;
+            font-weight: bold;
+        }
+        form input[type="text"],
+        form input[type="email"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        form input[type="radio"],
+        form input[type="checkbox"] {
+            margin-left: 10px;
+            margin-right: 6px;
+        }
+        form button[type="submit"] {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            display: none;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 40px 5vw 0;
+            border-radius: 30px 30px 0 0;
+            font-size: 1rem;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #4CAF50;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                width: 95vw;
+                left: 2.5vw;
+            }
+            section {
+                margin: 5vh 4vw;
+                padding: 20px;
+                border-radius: 30px;
+            }
+            form {
+                width: 90%;
+            }
+            form .form-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            form label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar" id="navbar">
+        <a href="#about"><button>About</button></a>
+        <a href="#skills"><button>Skills</button></a>
+        <a href="#projects"><button>Projects</button></a>
+        <a href="#contact"><button>Contact</button></a>
+    </div>
+    <main>
+        <section id="home">
+            <h1>Hi, I'm U Arun</h1>
+            <p>Front-End Developer & Passionate Learner</p>
+            <a href="#about"><button>Explore Portfolio ↓</button></a>
+        </section>
+        <section id="about">
+            <h1>About Me</h1>
+            <img src="Arun.jpg" alt="A photo of me" height="300">
+            <p>Hello! I'm a creative and curious front-end developer with a strong passion for building intuitive,
+                user-friendly web interfaces.</p>
+            <p>Currently, I am pursuing my B.Tech at <em>MLR Institute of Technology</em>, Hyderabad, where I
+                continuously sharpen my technical and problem-solving skills.</p>
+            <p>My journey in web development began through self-learning from platforms like YouTube, online
+                documentation, and hands-on projects—fueling my dedication to grow as a developer every single day.</p>
+        </section>
+        <section id="skills">
+            <h1>My Skills</h1>
+            <ol>
+                <li>Python Basics</li>
+                <li>Java Basics</li>
+                <li>Data Structures Basics</li>
+                <li>HTML Basics</li>
+                <li>CSS Basics</li>
+                <li>JavaScript Basics</li>
+            </ol>
+        </section>
+        <section id="projects">
+            <h1>My Projects</h1>
+            <table>
+                <tr>
+                    <th>Project</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Portfolio Website</td>
+                    <td>Built using HTML, CSS & JavaScript</td>
+                </tr>
+                <tr>
+                    <td>Online Feedback System</td>
+                    <td>Built using HTML, CSS, JavaScript & Node.js</td>
+                </tr>
+            </table>
+        </section>
+        <section id="contact">
+            <h1>Contact Me</h1>
+            <p>Feel free to get in touch using the form below:</p>
+            <form>
+                <div class="form-row">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="e.g., U Arun" />
+                </div>
+                <div class="form-row">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., arun@gmail.com" />
+                </div>
+                <div class="form-row">
+                    <label>Gender:</label>
+                    <input type="radio" id="male" name="gender" value="male" /><label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female" /><label for="female">Female</label>
+                </div>
+                <div class="form-row">
+                    <label>Interests:</label>
+                    <input type="checkbox" id="coding" name="interest" value="coding" /><label
+                        for="coding">Coding</label>
+                    <input type="checkbox" id="reading" name="interest" value="reading" /><label
+                        for="reading">Reading</label>
+                </div>
+                <div class="form-row">
+                    <label for="bio">Short Bio:</label>
+                    <input type="text" id="bio" name="bio" placeholder="Tell me something about you (max 200 chars)" />
+                </div>
+                <div class="form-row">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <button class="scrollTop" id="scrollBtn" onclick="scrollToTop()">↑</button>
+    <footer>
+        <div style="margin-bottom: 10px;">
+            <a href="https://www.facebook.com/share/16Ufv7aBWb/" target="_blank"><i
+                    class="fab fa-facebook fa-lg"></i></a>
+            <a href="https://www.instagram.com/urstrulyarun7?igsh=Z3hmNWVmM3FvMTc0" target="_blank"><i
+                    class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://x.com/UArun07?t=4QFQWPWL1Zv4uw-ASOOmJQ&s=08" target="_blank"><i
+                    class="fab fa-twitter fa-lg"></i></a>
+            <a href="https://www.linkedin.com/in/u-arun-9956a5297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+        <p>&copy; 2025 U Arun - All Rights Reserved.</p>
+    </footer>
+    <script>
+        const navbar = document.getElementById("navbar");
+        const scrollBtn = document.getElementById("scrollBtn");
+        window.onscroll = function () {
+            if (window.scrollY > window.innerHeight * 0.7) {
+                navbar.style.display = "block";
+                scrollBtn.style.display = "block";
+            } else {
+                navbar.style.display = "none";
+                scrollBtn.style.display = "none";
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
